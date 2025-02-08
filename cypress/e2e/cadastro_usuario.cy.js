@@ -55,5 +55,4 @@ describe('Cadastro de Usuário', () => {
         cadastro_usuario_page.clicarCadastrar()
         cadastro_usuario_page.validarMensagemSucesso(nome)
     })
-
   })
