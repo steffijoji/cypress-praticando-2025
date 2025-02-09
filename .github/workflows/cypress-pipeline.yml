@@ -9,10 +9,10 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Checkout/Clone do projeto
+      - name: Checkout/Clone project
         uses: actions/checkout@v4
 
-      - name: Install root dependencies
+      - name: Install dependencies
         run: npm install --package-lock-only
         
       - name: Install Cypress and run tests
@@ -21,3 +21,9 @@ jobs:
           record: true
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+
+      - name: Upload reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: Report
+          path: cypress\reports\html
