@@ -1,0 +1,29 @@
+name: Run Basic Tests - Scheduler
+
+on: 
+  schedule:
+    - cron: "0,15,30,45 19,20,21 * * *"
+
+jobs:
+  cypress-run:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout/Clone project
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install --package-lock-only
+        
+      - name: Install Cypress and run tests
+        uses: cypress-io/github-action@v6
+        with:
+          record: true
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+
+      - name: Upload reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: Report
+          path: cypress\reports\html
