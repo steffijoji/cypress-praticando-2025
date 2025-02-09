@@ -43,5 +43,4 @@ describe('Login', () => {
     login_page.clicarLogin()
     login_page.validarMensagemSucesso(email)
   })
-
 })
