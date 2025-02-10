@@ -2,7 +2,7 @@ name: Run Basic Tests - Scheduler
 
 on: 
   schedule:
-    - cron: "30 * * * *"
+    - cron: "0 0,6,12,18 * * *"
 
 jobs:
   cypress-run:
